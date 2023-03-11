@@ -5,6 +5,7 @@ import styles from "./home.module.css";
 
 export interface MovieComponent {
   id:number;
+  year:string,
   medium_cover_image:string;
   title:string;
   summary:string;
@@ -27,15 +28,18 @@ function Home() {
     getMovies();
   }, []);
   return (
-    <div>
+    <div className={styles.container}>
       {loading ? (
-        <h1>Loading...</h1>
+        <div className={styles.loader}>
+          <span>Loading...</span>
+      </div>
       ) : (
-        <div>
+        <div className={styles.movies}>
           {movies.map((movie) => (
             <MovieComponent
               key={(movie as MovieComponent).id}
               id={(movie as MovieComponent).id}
+              year={(movie as MovieComponent).year}
               medium_cover_image={(movie as MovieComponent).medium_cover_image}
               title={(movie as MovieComponent).title}
               summary={(movie as MovieComponent).summary}
