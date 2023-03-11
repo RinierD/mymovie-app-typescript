@@ -1,5 +1,15 @@
 import { useEffect, useState } from "react";
-import Movie from "../components/Movie";
+import { MovieComponent } from "../components/movie-component";
+import styles from "./home.module.css";
+
+
+export interface MovieComponent {
+  id:number;
+  medium_cover_image:string;
+  title:string;
+  summary:string;
+  genres:string[];
+}
 
 function Home() {
   const [loading, setLoading] = useState(true);
@@ -23,13 +33,13 @@ function Home() {
       ) : (
         <div>
           {movies.map((movie) => (
-            <Movie
-              key={movie.id}
-              id={movie.id}
-              coverImg={movie.medium_cover_image}
-              title={movie.title}
-              summary={movie.summary}
-              genres={movie.genres}
+            <MovieComponent
+              key={(movie as MovieComponent).id}
+              id={(movie as MovieComponent).id}
+              medium_cover_image={(movie as MovieComponent).medium_cover_image}
+              title={(movie as MovieComponent).title}
+              summary={(movie as MovieComponent).summary}
+              genres={(movie as MovieComponent).genres}
             />
           ))}
         </div>

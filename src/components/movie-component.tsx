@@ -2,12 +2,28 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
 
-function Movie({ id, coverImg, title, summary, genres }) {
-    return (
+
+interface MovieComponent {
+  id:number;
+  medium_cover_image:string;
+  title:string;
+  summary:string;
+  genres:string[];
+}
+
+export const MovieComponent: React.FC<MovieComponent> = ({
+  id,
+  medium_cover_image,
+  title,
+  summary,
+  genres,
+
+}) => {
+return (
       <div>
-        <img src={coverImg} alt={title} />
+        <img src={medium_cover_image} alt={title} />
         <h2>
-            <Link to={`/movie/${id}`}>{title}</Link>
+          <Link to={`/movie/${id}`}>{title}</Link>
         </h2>
         <p>{summary}</p>
         <ul>
@@ -26,4 +42,4 @@ function Movie({ id, coverImg, title, summary, genres }) {
 //     genres: PropTypes.arrayOf(PropTypes.string).isRequired,
 //   };
   
-  export default Movie;
+  export default MovieComponent;
