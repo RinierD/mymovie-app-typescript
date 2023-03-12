@@ -31,7 +31,7 @@ return (
               <p className={styles.movie__body}>{summary.length > 235 ? `${summary.slice(0, 235)}...` : summary}</p>
             <ul className={styles.movie__genres}>
               {genres.map((g) => (
-                <li className={styles.movie__genres__list} key={g}>{g}</li>
+                <li key={g}>{g}</li>
               ))}
             </ul>
           </div>
