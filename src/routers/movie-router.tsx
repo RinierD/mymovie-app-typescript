@@ -1,16 +1,18 @@
-import React from 'react';
-import { Route, Routes } from "react-router-dom";
-import Detail from '../pages/Details';
-import DowinnLogin from '../pages/dowinn-login';
-import Home from '../pages/Home';
+import React from "react";
+import { Route, Switch } from "react-router-dom";
+import { Details } from "../pages/Details";
+import Home from "../pages/Home";
 
 function MovieRoute() {
   return (
-      <Routes>
-          <Route path="/dowin" element={<DowinnLogin />} />
-          <Route path="/movie/:id" element={<Detail />} />
-          <Route path="/" element={<Home />} />
-      </Routes>
+    <Switch>
+      <Route path={"/movie/:id"}>
+        <Details />
+      </Route>
+      <Route path="/">
+        <Home />
+      </Route>
+    </Switch>
   );
 }
 
